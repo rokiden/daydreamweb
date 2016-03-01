@@ -22,6 +22,8 @@ public class WebsiteDaydream extends DreamService {
 	private String preferenceUrl;
 	private boolean preferenceRefresh;
 	private Integer preferenceInterval;
+	private boolean preferenceOverviewMode;
+	private boolean preferenceWideViewPort;
 
 	@Override
 	public void onAttachedToWindow() {
@@ -36,6 +38,8 @@ public class WebsiteDaydream extends DreamService {
 		preferenceUrl = sharedPreferences.getString("pref_key_url", "http://www.bbc.co.uk/news");
 		preferenceRefresh = sharedPreferences.getBoolean("pref_key_refresh", false);
 		preferenceInterval = Integer.parseInt(sharedPreferences.getString("pref_key_interval", "5"));
+		preferenceOverviewMode = sharedPreferences.getBoolean("pref_key_overviewmode", false);
+		preferenceWideViewPort = sharedPreferences.getBoolean("pref_key_wideviewport", false);
 
 		setFullscreen(preferenceFullscreen);
 		setInteractive(preferenceInteractive);
@@ -55,6 +59,8 @@ public class WebsiteDaydream extends DreamService {
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setAllowFileAccess(true);
 		webSettings.setPluginState(WebSettings.PluginState.ON_DEMAND);
+		webSettings.setLoadWithOverviewMode(preferenceOverviewMode);
+		webSettings.setUseWideViewPort(preferenceWideViewPort);
 		webSettings.setSavePassword(false);
 		webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 		webSettings.setDefaultZoom(WebSettings.ZoomDensity.FAR);
