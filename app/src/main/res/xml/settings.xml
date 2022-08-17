@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory 
+		android:title="Server"
+		android:key="pref_key_address_settings">
+		<EditTextPreference
+			android:key="pref_key_url"
+			android:title="Address"
+			android:lines="5"
+			android:summary="The web address to load."
+			android:inputType="textNoSuggestions"
+			android:defaultValue="https://trends.google.com/trends/trendingsearches/daily" />
+		<EditTextPreference
+			android:key="pref_auth_user"
+			android:title="Username"
+			android:lines="1"
+			android:summary="Basic auth username. Leave empty to disable."
+			android:inputType="textNoSuggestions"
+			android:defaultValue="" />
+		<EditTextPreference
+			android:key="pref_auth_pass"
+			android:title="Password"
+			android:lines="1"
+			android:summary="Basic auth password."
+			android:inputType="textNoSuggestions"
+			android:defaultValue="" />
+	</PreferenceCategory>
+	<PreferenceCategory 
+		android:title="Display"
+		android:key="pref_key_interaction_settings">
+		<CheckBoxPreference
+			android:key="pref_key_fullscreen"
+			android:title="Fullscreen"
+			android:summaryOff="The system bar will be visible."
+			android:summaryOn="The daydream will fill the screen."
+			android:defaultValue="true" />
+		<CheckBoxPreference
+			android:key="pref_key_interactive"
+			android:title="Touchable"
+			android:summaryOff="Interaction will wake the device."
+			android:summaryOn="Interaction will navigate the page."
+			android:defaultValue="false" />
+		<CheckBoxPreference
+			android:key="pref_key_overviewmode"
+			android:title="Overview Mode"
+			android:summaryOff="Overview mode off."
+			android:summaryOn="Overview mode on."
+			android:defaultValue="false" />
+		<CheckBoxPreference
+			android:key="pref_key_wideviewport"
+			android:title="Wide view port"
+			android:summaryOff="Display in normal view port."
+			android:summaryOn="Display in wide view port."
+			android:defaultValue="false" />
+	</PreferenceCategory>
+	<PreferenceCategory 
+		android:title="Refresh"
+		android:key="pref_key_refresh_settings">
+		<CheckBoxPreference
+			android:key="pref_key_refresh"
+			android:title="Refresh"
+			android:summaryOff="The page will not refresh."
+			android:summaryOn="The page will refresh after an interval."
+			android:defaultValue="false" />
+		<ListPreference
+			android:dependency="pref_key_refresh"
+			android:key="pref_key_interval"
+			android:title="Interval"
+			android:dialogTitle="Refresh Interval"
+			android:entries="@array/pref_interval_entries"
+			android:entryValues="@array/pref_interval_values"
+			android:defaultValue="5" />
+	</PreferenceCategory>
+</PreferenceScreen>
